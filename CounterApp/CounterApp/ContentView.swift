@@ -14,6 +14,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationSplitView {
+            CounterItem().padding(.horizontal, 25)
             List {
                 ForEach(items) { item in
                     NavigationLink {
@@ -51,6 +52,21 @@ struct ContentView: View {
             for index in offsets {
                 modelContext.delete(items[index])
             }
+        }
+    }
+}
+
+struct CounterItem: View {
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .foregroundColor(.gray)
+                .frame(height: 100)
+            HStack(alignment: .lastTextBaseline) {
+                Text("15").font(.system(size: 50)).fontWeight(.semibold)
+                Text("Sold").font(.system(size: 20)).padding(.leading, 10)
+                Spacer()
+            }.padding(15)
         }
     }
 }
