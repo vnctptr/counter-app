@@ -11,7 +11,7 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
-
+    
     var body: some View {
         NavigationSplitView {
             CounterItem().padding(.horizontal, 25)
@@ -39,14 +39,14 @@ struct ContentView: View {
             Text("Select an item")
         }
     }
-
+    
     private func addItem() {
         withAnimation {
             let newItem = Item(timestamp: Date())
             modelContext.insert(newItem)
         }
     }
-
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
@@ -66,8 +66,16 @@ struct CounterItem: View {
                 Text("15").font(.system(size: 50)).fontWeight(.semibold)
                 Text("Sold").font(.system(size: 20)).padding(.leading, 10)
                 Spacer()
-            }.padding(15)
+                PlusButton().padding(10)
+            }
+            .padding(15)
         }
+    }
+}
+
+struct PlusButton: View {
+    var body: some View {
+        Image(systemName: "plus.circle.fill").font(.system(size: 50))
     }
 }
 
