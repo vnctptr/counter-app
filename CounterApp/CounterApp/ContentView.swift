@@ -14,7 +14,11 @@ struct ContentView: View {
     
     var body: some View {
         NavigationSplitView {
-            CounterItem().padding(.horizontal, 25)
+            VStack(spacing: 15) {
+                ForEach(items) { item in
+                    CounterItem().padding(.horizontal, 25)
+                }
+            }
             List {
                 ForEach(items) { item in
                     NavigationLink {
