@@ -8,17 +8,15 @@
 import SwiftUI
 import SwiftData
 
+
+
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
-    
+
     var body: some View {
         NavigationSplitView {
-            VStack(spacing: 15) {
-                ForEach(items) { item in
-                    CounterItem().padding(.horizontal, 25)
-                }
-            }
+            CounterList()
             List {
                 ForEach(items) { item in
                     NavigationLink {
@@ -60,15 +58,28 @@ struct ContentView: View {
     }
 }
 
+struct CounterList: View {
+    let counters = sampleCounters
+    var body: some View {
+       
+        VStack(spacing: 15) {
+            ForEach(counters) { counter in
+                CounterItem(counter: counter).padding(.horizontal, 25)
+            }
+        }
+    }
+}
+
 struct CounterItem: View {
+    let counter: Counter
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
                 .foregroundColor(.gray)
                 .frame(height: 100)
             HStack(alignment: .lastTextBaseline) {
-                Text("15").font(.system(size: 50)).fontWeight(.semibold)
-                Text("Sold").font(.system(size: 20)).padding(.leading, 10)
+                Text(String(counter.count)).font(.system(size: 50)).fontWeight(.semibold)
+                Text(counter.name).font(.system(size: 20)).padding(.leading, 10)
                 Spacer()
                 PlusButton().padding(10)
             }

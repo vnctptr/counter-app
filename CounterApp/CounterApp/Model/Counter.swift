@@ -13,3 +13,9 @@ struct Counter: Identifiable {
     var count: Int = 0    
 }
 
+
+var sampleCounters: [Counter] = [
+    .init(name: "Books", count:1),
+    .init(name: "Sold", count:15),
+    .init(name: "Given away", count:200)
+]
