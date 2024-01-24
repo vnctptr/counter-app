@@ -30,14 +30,17 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Menu {
-                        Text("Category 1")                        
+                        Button {
+                            print("button pressed")
+                        } label: {
+                            Text("Category 1")
+                        }
                     } label: {
                         HStack {
-                            Text("All counters")
+                            Text("All counters").foregroundColor(.black)
                             Image(systemName: "chevron.down")
                         }
-                        
-                        .foregroundColor( .black)
+                        .foregroundColor(.black)
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
