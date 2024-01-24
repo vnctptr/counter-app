@@ -13,7 +13,7 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
-
+    
     var body: some View {
         NavigationSplitView {
             CounterList()
@@ -28,6 +28,18 @@ struct ContentView: View {
                 .onDelete(perform: deleteItems)
             }
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Menu {
+                        Text("Category 1")                        
+                    } label: {
+                        HStack {
+                            Text("All counters")
+                            Image(systemName: "chevron.down")
+                        }
+                        
+                        .foregroundColor( .black)
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
@@ -61,7 +73,7 @@ struct ContentView: View {
 struct CounterList: View {
     let counters = sampleCounters
     var body: some View {
-       
+        
         VStack(spacing: 15) {
             ForEach(counters) { counter in
                 CounterItem(counter: counter).padding(.horizontal, 25)
