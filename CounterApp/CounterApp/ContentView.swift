@@ -75,15 +75,33 @@ struct ContentView: View {
 
 struct CounterList: View {
     let counters = sampleCounters
+    @State private var selectedItem: Counter?
     var body: some View {
         
         VStack(spacing: 15) {
             ForEach(counters) { counter in
                 CounterItem(counter: counter).padding(.horizontal, 25)
+                    .onTapGesture {
+                        selectedItem = counter
+                    }
             }
+        }.sheet(item: $selectedItem) { selectedCounter in
+            CounterDetailView(item: selectedCounter)
+                .presentationDetents([.height(650), .large])
+                .presentationCornerRadius(30)
+            
         }
     }
 }
+
+
+struct CounterDetailView: View {
+    let item: Counter
+    var body: some View {
+        Text(item.name)
+    }
+}
+
 
 struct CounterItem: View {
     let counter: Counter
