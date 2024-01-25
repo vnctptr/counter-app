@@ -13,6 +13,7 @@
 		EFC071DF2B58474D00358DB3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC071DE2B58474D00358DB3 /* Item.swift */; };
 		EFC071E12B58474F00358DB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFC071E02B58474F00358DB3 /* Assets.xcassets */; };
 		EFC071E42B58474F00358DB3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFC071E32B58474F00358DB3 /* Preview Assets.xcassets */; };
+		EFE9499E2B6209FC00DD9ADB /* CounterViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9499D2B6209FC00DD9ADB /* CounterViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		EFC071DE2B58474D00358DB3 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		EFC071E02B58474F00358DB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFC071E32B58474F00358DB3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EFE9499D2B6209FC00DD9ADB /* CounterViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				EFC071DA2B58474D00358DB3 /* CounterAppApp.swift */,
+				EFE9499C2B6209E400DD9ADB /* Views */,
 				EF4D5A8D2B5E38160007D59C /* Model */,
 				EFC071DC2B58474D00358DB3 /* ContentView.swift */,
 				EFC071DE2B58474D00358DB3 /* Item.swift */,
@@ -79,6 +82,14 @@
 				EFC071E32B58474F00358DB3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EFE9499C2B6209E400DD9ADB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EFE9499D2B6209FC00DD9ADB /* CounterViews.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF4D5A8F2B5E38220007D59C /* Counter.swift in Sources */,
+				EFE9499E2B6209FC00DD9ADB /* CounterViews.swift in Sources */,
 				EFC071DD2B58474D00358DB3 /* ContentView.swift in Sources */,
 				EFC071DF2B58474D00358DB3 /* Item.swift in Sources */,
 				EFC071DB2B58474D00358DB3 /* CounterAppApp.swift in Sources */,
