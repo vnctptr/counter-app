@@ -32,19 +32,32 @@ struct CounterDetailSheetView: View {
     let counter: Counter
     
     var body: some View {
-        VStack {
-            Text(String(counter.count))
-                .font(.system(size: 100))
-                .fontWeight(.semibold)
-            Text(counter.name)
-                .font(.system(size: 20))
-                .padding(.leading, 10)
-            HStack (spacing: 40){
-                CounterButton(imageName: "minus.circle.fill")
-                CounterButton(imageName: "gobackward")
-                CounterButton(imageName: "plus.circle.fill")
-            }.padding(.vertical, 20)
-        }
+        TabView {
+            VStack {               
+                Spacer()
+                Text(String(counter.count))
+                    .font(.system(size: 100))
+                    .fontWeight(.semibold)
+                Text(counter.name)
+                    .font(.system(size: 20))
+                    .padding(.leading, 10)
+                HStack (spacing: 40){
+                    CounterButton(imageName: "minus.circle.fill")
+                    CounterButton(imageName: "gobackward")
+                    CounterButton(imageName: "plus.circle.fill")
+                }.padding(.vertical, 20)
+                Spacer()
+            }
+                .tabItem() {
+                    Image(systemName: "number.circle.fill")
+            }
+            CounterEditView()
+                .tabItem() {
+                    Image(systemName: "pencil")
+                }
+
+        }.accentColor(.black)
+
     }
 }
 
@@ -71,7 +84,7 @@ struct CounterItem: View {
 struct CounterButton: View {
     let imageName: String
     let fontSize: CGFloat?
-
+    
     init(imageName: String, fontSize: CGFloat? = 50) {
         self.imageName = imageName
         self.fontSize = fontSize
