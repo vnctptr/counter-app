@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EF35A76F2B6495B400BD5446 /* CounterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF35A76E2B6495B400BD5446 /* CounterDetailView.swift */; };
+		EF35A7712B66D5BA00BD5446 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF35A7702B66D5BA00BD5446 /* SettingsView.swift */; };
 		EF4D5A8F2B5E38220007D59C /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D5A8E2B5E38220007D59C /* Counter.swift */; };
 		EFC071DB2B58474D00358DB3 /* CounterAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC071DA2B58474D00358DB3 /* CounterAppApp.swift */; };
 		EFC071DD2B58474D00358DB3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC071DC2B58474D00358DB3 /* ContentView.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		EF35A76E2B6495B400BD5446 /* CounterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterDetailView.swift; sourceTree = "<group>"; };
+		EF35A7702B66D5BA00BD5446 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EF4D5A8E2B5E38220007D59C /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		EFC071D72B58474D00358DB3 /* CounterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CounterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC071DA2B58474D00358DB3 /* CounterAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterAppApp.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				EFE9499D2B6209FC00DD9ADB /* CounterViews.swift */,
 				EFE9499F2B63485000DD9ADB /* CounterEditView.swift */,
 				EF35A76E2B6495B400BD5446 /* CounterDetailView.swift */,
+				EF35A7702B66D5BA00BD5446 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF4D5A8F2B5E38220007D59C /* Counter.swift in Sources */,
+				EF35A7712B66D5BA00BD5446 /* SettingsView.swift in Sources */,
 				EFE9499E2B6209FC00DD9ADB /* CounterViews.swift in Sources */,
 				EF35A76F2B6495B400BD5446 /* CounterDetailView.swift in Sources */,
 				EFC071DD2B58474D00358DB3 /* ContentView.swift in Sources */,

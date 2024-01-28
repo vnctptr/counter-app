@@ -28,29 +28,36 @@ struct ContentView: View {
                 .onDelete(perform: deleteItems)
             }
             .toolbar {
-//                TODO: Uncomment this when filters are added
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                    Menu {
-//                        Button {
-//                            print("button pressed")
-//                        } label: {
-//                            Text("Category 1")
-//                        }
-//                    } label: {
-//                        HStack {
-//                            Text("All counters").foregroundColor(.black)
-//                            Image(systemName: "chevron.down")
-//                        }
-//                        .foregroundColor(.black)
-//                    }
-//                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
+                //                TODO: Uncomment this when filters are added
+                //                ToolbarItem(placement: .navigationBarLeading) {
+                //                    Menu {
+                //                        Button {
+                //                            print("button pressed")
+                //                        } label: {
+                //                            Text("Category 1")
+                //                        }
+                //                    } label: {
+                //                        HStack {
+                //                            Text("All counters").foregroundColor(.black)
+                //                            Image(systemName: "chevron.down")
+                //                        }
+                //                        .foregroundColor(.black)
+                //                    }
+                //                }
+                
                 ToolbarItem {
                     Button(action: addItem) {
                         Label("Add Item", systemImage: "plus")
                     }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: SettingsView()) {
+                        Image(systemName: "gearshape.fill")
+                    }
+                    
                 }
             }
         } detail: {
