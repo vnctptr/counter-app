@@ -28,21 +28,22 @@ struct ContentView: View {
                 .onDelete(perform: deleteItems)
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Menu {
-                        Button {
-                            print("button pressed")
-                        } label: {
-                            Text("Category 1")
-                        }
-                    } label: {
-                        HStack {
-                            Text("All counters").foregroundColor(.black)
-                            Image(systemName: "chevron.down")
-                        }
-                        .foregroundColor(.black)
-                    }
-                }
+//                TODO: Uncomment this when filters are added
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    Menu {
+//                        Button {
+//                            print("button pressed")
+//                        } label: {
+//                            Text("Category 1")
+//                        }
+//                    } label: {
+//                        HStack {
+//                            Text("All counters").foregroundColor(.black)
+//                            Image(systemName: "chevron.down")
+//                        }
+//                        .foregroundColor(.black)
+//                    }
+//                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
