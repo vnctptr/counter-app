@@ -15,7 +15,7 @@ struct CounterList: View {
         
         VStack(spacing: 15) {
             ForEach(counters) { counter in
-                CounterItem(counter: counter).padding(.horizontal, 25)
+                CounterItemView(counter: counter).padding(.horizontal, 25)
                     .onTapGesture {
                         selectedCounter = counter
                     }
@@ -47,7 +47,7 @@ struct CounterDetailSheetView: View {
     }
 }
 
-struct CounterItem: View {
+struct CounterItemView: View {
     let counter: Counter
     
     var body: some View {

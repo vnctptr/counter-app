@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF0516562B6751CD007FEE1F /* CounterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0516552B6751CD007FEE1F /* CounterItem.swift */; };
 		EF35A76F2B6495B400BD5446 /* CounterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF35A76E2B6495B400BD5446 /* CounterDetailView.swift */; };
 		EF35A7712B66D5BA00BD5446 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF35A7702B66D5BA00BD5446 /* SettingsView.swift */; };
 		EF4D5A8F2B5E38220007D59C /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D5A8E2B5E38220007D59C /* Counter.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF0516552B6751CD007FEE1F /* CounterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterItem.swift; sourceTree = "<group>"; };
 		EF35A76E2B6495B400BD5446 /* CounterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterDetailView.swift; sourceTree = "<group>"; };
 		EF35A7702B66D5BA00BD5446 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EF35A7722B67507000BD5446 /* CounterApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CounterApp.entitlements; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				EF4D5A8E2B5E38220007D59C /* Counter.swift */,
+				EF0516552B6751CD007FEE1F /* CounterItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				EF4D5A8F2B5E38220007D59C /* Counter.swift in Sources */,
 				EF35A7712B66D5BA00BD5446 /* SettingsView.swift in Sources */,
 				EFE9499E2B6209FC00DD9ADB /* CounterViews.swift in Sources */,
+				EF0516562B6751CD007FEE1F /* CounterItem.swift in Sources */,
 				EF35A76F2B6495B400BD5446 /* CounterDetailView.swift in Sources */,
 				EFC071DD2B58474D00358DB3 /* ContentView.swift in Sources */,
 				EFC071DF2B58474D00358DB3 /* Item.swift in Sources */,
