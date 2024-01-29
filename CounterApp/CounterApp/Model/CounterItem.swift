@@ -8,6 +8,12 @@
 import Foundation
 import CloudKit
 
+enum CounterRecordKeys: String {
+    case type = "CounterItem"
+    case name
+    case count
+}
+
 struct CounterItem {
     var recordId: CKRecord.ID?
     let name: String
@@ -16,9 +22,9 @@ struct CounterItem {
 
 extension CounterItem {
     var record: CKRecord {
-        let record = CKRecord(recordType: "CounterItem")
-        record["name"] = name
-        record["count"] = count
+        let record = CKRecord(recordType: CounterRecordKeys.type.rawValue)
+        record[CounterRecordKeys.name.rawValue] = name
+        record[CounterRecordKeys.count.rawValue] = count
         return record
     }
 }
