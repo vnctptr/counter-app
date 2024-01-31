@@ -47,13 +47,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EF4D5A8D2B5E38160007D59C /* Model */ = {
+		EF4D5A8D2B5E38160007D59C /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				EF4D5A8E2B5E38220007D59C /* Counter.swift */,
 				EF0516552B6751CD007FEE1F /* CounterItem.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EFC071CE2B58474D00358DB3 = {
@@ -78,7 +78,7 @@
 				EF35A7722B67507000BD5446 /* CounterApp.entitlements */,
 				EFC071DA2B58474D00358DB3 /* CounterAppApp.swift */,
 				EFE9499C2B6209E400DD9ADB /* Views */,
-				EF4D5A8D2B5E38160007D59C /* Model */,
+				EF4D5A8D2B5E38160007D59C /* Models */,
 				EFC071DC2B58474D00358DB3 /* ContentView.swift */,
 				EFC071DE2B58474D00358DB3 /* Item.swift */,
 				EFC071E02B58474F00358DB3 /* Assets.xcassets */,
