@@ -11,13 +11,13 @@ import SwiftUI
 struct CounterList: View {
     @State private var selectedCounter: CounterItem?
     @StateObject private var model = Model()
+    
     var body: some View {
-        
-        
-        VStack(spacing: 15) {
-            VStack {
+        ScrollView {
+            LazyVStack(spacing: 15) {
                 ForEach(model.counters, id: \.recordId) { counter in
-                    CounterItemView(counter: counter).padding(.horizontal, 25)
+                    CounterItemView(counter: counter)
+                        .padding(.horizontal, 25)
                         .onTapGesture {
                             selectedCounter = counter
                         }
@@ -26,13 +26,12 @@ struct CounterList: View {
             .task {
                 do {
                     try await model.populateCounters()
-                }
-                catch {
+                } catch {
                     print(error)
                 }
             }
-
-        }.sheet(item: $selectedCounter) { selectedCounter in
+        }
+        .sheet(item: $selectedCounter) { selectedCounter in
             CounterDetailSheetView(counter: selectedCounter)
                 .presentationDetents([.medium])
                 .presentationCornerRadius(30)
