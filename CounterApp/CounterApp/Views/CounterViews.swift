@@ -9,7 +9,6 @@ import SwiftUI
 
 
 struct CounterList: View {
-    let sample_counters = sampleCounters
     @State private var selectedCounter: CounterItem?
     @StateObject private var model = Model()
     var body: some View {

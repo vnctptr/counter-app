@@ -10,7 +10,6 @@
 		EF0516562B6751CD007FEE1F /* CounterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0516552B6751CD007FEE1F /* CounterItem.swift */; };
 		EF35A76F2B6495B400BD5446 /* CounterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF35A76E2B6495B400BD5446 /* CounterDetailView.swift */; };
 		EF35A7712B66D5BA00BD5446 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF35A7702B66D5BA00BD5446 /* SettingsView.swift */; };
-		EF4D5A8F2B5E38220007D59C /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D5A8E2B5E38220007D59C /* Counter.swift */; };
 		EF9515E52B6A064B0087E6EC /* CounterCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9515E42B6A064B0087E6EC /* CounterCreateView.swift */; };
 		EF9515E72B6A07FA0087E6EC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9515E62B6A07FA0087E6EC /* Model.swift */; };
 		EFC071DB2B58474D00358DB3 /* CounterAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC071DA2B58474D00358DB3 /* CounterAppApp.swift */; };
@@ -26,7 +25,6 @@
 		EF35A76E2B6495B400BD5446 /* CounterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterDetailView.swift; sourceTree = "<group>"; };
 		EF35A7702B66D5BA00BD5446 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EF35A7722B67507000BD5446 /* CounterApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CounterApp.entitlements; sourceTree = "<group>"; };
-		EF4D5A8E2B5E38220007D59C /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		EF9515E42B6A064B0087E6EC /* CounterCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterCreateView.swift; sourceTree = "<group>"; };
 		EF9515E62B6A07FA0087E6EC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EFC071D72B58474D00358DB3 /* CounterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CounterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,7 +50,6 @@
 		EF4D5A8D2B5E38160007D59C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EF4D5A8E2B5E38220007D59C /* Counter.swift */,
 				EF0516552B6751CD007FEE1F /* CounterItem.swift */,
 				EF9515E62B6A07FA0087E6EC /* Model.swift */,
 			);
@@ -179,7 +176,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF4D5A8F2B5E38220007D59C /* Counter.swift in Sources */,
 				EF9515E52B6A064B0087E6EC /* CounterCreateView.swift in Sources */,
 				EF35A7712B66D5BA00BD5446 /* SettingsView.swift in Sources */,
 				EFE9499E2B6209FC00DD9ADB /* CounterViews.swift in Sources */,
