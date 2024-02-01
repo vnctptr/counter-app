@@ -87,6 +87,7 @@ struct CounterDetailSheetView: View {
 struct CounterItemView: View {
     let counter: CounterItem
     let onUpdate: (CounterItem) -> Void
+    let TRUNCATED_NAME_LENGTH = 25
     
     var body: some View {
         ZStack {
@@ -96,7 +97,10 @@ struct CounterItemView: View {
             
             HStack(alignment: .lastTextBaseline) {
                 Text(String(counter.count)).font(.system(size: 50)).fontWeight(.semibold)
-                Text(counter.name).font(.system(size: 20)).padding(.leading, 10)
+                let truncatedText = counter.name.prefix(TRUNCATED_NAME_LENGTH) + (counter.name.count > TRUNCATED_NAME_LENGTH ? "..." : "")
+                Text(truncatedText)
+                    .font(.system(size: 20))
+                    .padding(.leading, 10)
                 Spacer()
                 CounterButton(imageName: "plus.circle.fill")
                     .onTapGesture {
