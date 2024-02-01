@@ -42,7 +42,7 @@ struct CounterList: View {
             }
         }
         .sheet(item: $selectedCounter) { selectedCounter in
-            CounterDetailSheetView(counter: selectedCounter)
+            CounterDetailSheetView(counter: selectedCounter, onUpdate: updateCounter)
                 .presentationDetents([.medium])
                 .presentationCornerRadius(30)
         }
@@ -50,21 +50,33 @@ struct CounterList: View {
 }
 
 struct CounterDetailSheetView: View {
-    let counter: CounterItem
+    @EnvironmentObject private var model: Model
+    @State var counter: CounterItem
+    let onUpdate: (CounterItem) -> Void
+    
+    private func updateCounter(counterItem: CounterItem) {
+        Task {
+            do {
+                try await model.updateCounter(editedCounterItem: counterItem)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     
     var body: some View {
         TabView {
-            CounterDetailView(counter: counter)
+            CounterDetailView(counter: counter, onUpdate: updateCounter)
                 .tabItem() {
                     Image(systemName: "number.circle.fill")
-            }
+                }
             CounterEditView()
                 .tabItem() {
                     Image(systemName: "pencil")
                 }
-
+            
         }.accentColor(.black)
-
     }
 }
 
@@ -82,11 +94,9 @@ struct CounterItemView: View {
                 Text(counter.name).font(.system(size: 20)).padding(.leading, 10)
                 Spacer()
                 CounterButton(imageName: "plus.circle.fill")
-                    .onTapGesture{
-                        print(counter.count)
+                    .onTapGesture {
                         var counterItemToUpdate = counter
                         counterItemToUpdate.count += 1
-                        print(counterItemToUpdate.count)
                         onUpdate(counterItemToUpdate)
                     }
                     .padding(10)
