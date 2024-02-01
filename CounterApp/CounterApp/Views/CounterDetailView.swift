@@ -16,10 +16,10 @@ struct CounterDetailView: View {
         VStack {
             Spacer()
             Text(String(counter.count))
-                .font(.system(size: 100))
+                .font(.system(size: EXTRA_LARGE_TITLE))
                 .fontWeight(.semibold)
             Text(counter.name)
-                .font(.system(size: 20))
+                .font(.title3)
                 .padding(.leading, 10)
             HStack (spacing: 40){
                 CounterButton(imageName: "minus.circle.fill")

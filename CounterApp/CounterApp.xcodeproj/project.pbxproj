@@ -18,6 +18,7 @@
 		EFC071E42B58474F00358DB3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFC071E32B58474F00358DB3 /* Preview Assets.xcassets */; };
 		EFE9499E2B6209FC00DD9ADB /* CounterViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9499D2B6209FC00DD9ADB /* CounterViews.swift */; };
 		EFE949A02B63485000DD9ADB /* CounterEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9499F2B63485000DD9ADB /* CounterEditView.swift */; };
+		EFFE5F982B6C29210029EAD6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE5F972B6C29210029EAD6 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		EFC071E32B58474F00358DB3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EFE9499D2B6209FC00DD9ADB /* CounterViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViews.swift; sourceTree = "<group>"; };
 		EFE9499F2B63485000DD9ADB /* CounterEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterEditView.swift; sourceTree = "<group>"; };
+		EFFE5F972B6C29210029EAD6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				EF35A7722B67507000BD5446 /* CounterApp.entitlements */,
 				EFC071DA2B58474D00358DB3 /* CounterAppApp.swift */,
+				EFFE5F962B6C290E0029EAD6 /* Constants */,
 				EFE9499C2B6209E400DD9ADB /* Views */,
 				EF4D5A8D2B5E38160007D59C /* Models */,
 				EFC071DC2B58474D00358DB3 /* ContentView.swift */,
@@ -104,6 +107,14 @@
 				EF35A7702B66D5BA00BD5446 /* SettingsView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		EFFE5F962B6C290E0029EAD6 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				EFFE5F972B6C29210029EAD6 /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +192,7 @@
 				EFE9499E2B6209FC00DD9ADB /* CounterViews.swift in Sources */,
 				EF0516562B6751CD007FEE1F /* CounterItem.swift in Sources */,
 				EF35A76F2B6495B400BD5446 /* CounterDetailView.swift in Sources */,
+				EFFE5F982B6C29210029EAD6 /* Constants.swift in Sources */,
 				EFC071DD2B58474D00358DB3 /* ContentView.swift in Sources */,
 				EF9515E72B6A07FA0087E6EC /* Model.swift in Sources */,
 				EFC071DB2B58474D00358DB3 /* CounterAppApp.swift in Sources */,

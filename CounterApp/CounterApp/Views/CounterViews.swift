@@ -96,10 +96,12 @@ struct CounterItemView: View {
                 .frame(height: 100)
             
             HStack(alignment: .lastTextBaseline) {
-                Text(String(counter.count)).font(.system(size: 50)).fontWeight(.semibold)
+                Text(String(counter.count))
+                    .font(.system(size: LARGE_TITLE))
+                    .fontWeight(.semibold)
                 let truncatedName = counter.name.prefix(TRUNCATED_NAME_LENGTH) + (counter.name.count > TRUNCATED_NAME_LENGTH ? "..." : "")
                 Text(truncatedName)
-                    .font(.system(size: 20))
+                    .font(.title3)
                     .padding(.leading, 10)
                 Spacer()
                 CounterButton(imageName: "plus.circle.fill")
@@ -120,12 +122,12 @@ struct CounterButton: View {
     let imageName: String
     let fontSize: CGFloat?
     
-    init(imageName: String, fontSize: CGFloat? = 50) {
+    init(imageName: String, fontSize: CGFloat = LARGE_TITLE) {
         self.imageName = imageName
         self.fontSize = fontSize
     }
     
     var body: some View {
-        Image(systemName: imageName).font(.system(size: fontSize ?? 50))
+        Image(systemName: imageName).font(.system(size: CGFloat(fontSize ?? LARGE_TITLE)))
     }
 }
