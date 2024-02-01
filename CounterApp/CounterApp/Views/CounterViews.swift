@@ -25,8 +25,8 @@ struct CounterList: View {
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 15) {
-                ForEach(sampleCounters, id: \.recordId) { counter in
-//                ForEach(model.counters, id: \.recordId) { counter in
+//                ForEach(sampleCounters, id: \.recordId) { counter in
+                ForEach(model.counters, id: \.recordId) { counter in
                     CounterItemView(counter: counter, onUpdate: updateCounter)
                         .padding(.horizontal, 25)
                         .onTapGesture {
