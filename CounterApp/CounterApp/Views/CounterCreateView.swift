@@ -33,14 +33,6 @@ struct CounterCreateView: View {
                                 }
                             }
                         ColorPicker("Select Color", selection: $selectedColor)
-                        HStack {
-                            Text("Archive")
-                            Spacer()
-                        }
-                        HStack {
-                            Text("Delete").foregroundColor(.red)
-                            Spacer()
-                        }
                     }.padding(20)
                         .background(
                             RoundedRectangle(cornerRadius: 15)
