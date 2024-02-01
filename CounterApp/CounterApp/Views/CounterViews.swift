@@ -27,6 +27,7 @@ struct CounterList: View {
             LazyVStack(spacing: 15) {
                 ForEach(model.counters, id: \.recordId) { counter in
                     CounterItemView(counter: counter, onUpdate: updateCounter)
+                ForEach(sampleCounters, id: \.recordId) { counter in
                         .padding(.horizontal, 25)
                         .onTapGesture {
                             selectedCounter = counter
@@ -51,7 +52,10 @@ struct CounterList: View {
 
 struct CounterDetailSheetView: View {
     @EnvironmentObject private var model: Model
+    @Environment(\.colorScheme) var colorScheme
+    
     @State var counter: CounterItem
+    
     let onUpdate: (CounterItem) -> Void
     
     private func updateCounter(counterItem: CounterItem) {
@@ -76,7 +80,7 @@ struct CounterDetailSheetView: View {
                     Image(systemName: "pencil")
                 }
             
-        }.accentColor(.black)
+        }.accentColor(colorScheme == .dark ? Color.white : Color.black)
     }
 }
 
