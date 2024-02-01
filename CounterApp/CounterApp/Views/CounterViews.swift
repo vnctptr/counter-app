@@ -25,9 +25,9 @@ struct CounterList: View {
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 15) {
-                ForEach(model.counters, id: \.recordId) { counter in
-                    CounterItemView(counter: counter, onUpdate: updateCounter)
                 ForEach(sampleCounters, id: \.recordId) { counter in
+//                ForEach(model.counters, id: \.recordId) { counter in
+                    CounterItemView(counter: counter, onUpdate: updateCounter)
                         .padding(.horizontal, 25)
                         .onTapGesture {
                             selectedCounter = counter
@@ -93,6 +93,7 @@ struct CounterItemView: View {
             RoundedRectangle(cornerRadius: 20)
                 .foregroundColor(.gray)
                 .frame(height: 100)
+            
             HStack(alignment: .lastTextBaseline) {
                 Text(String(counter.count)).font(.system(size: 50)).fontWeight(.semibold)
                 Text(counter.name).font(.system(size: 20)).padding(.leading, 10)
@@ -107,6 +108,7 @@ struct CounterItemView: View {
             }
             .padding(15)
         }
+        .frame(maxWidth: 600)
     }
 }
 
