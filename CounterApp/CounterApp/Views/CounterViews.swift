@@ -22,9 +22,6 @@ struct CounterList: View {
                             selectedCounter = counter
                         }
                 }
-                List(model.counters, id: \.recordId) { counterItem in
-                    Text(counterItem.name)
-                }}
             .task {
                 do {
                     try await model.populateCounters()
