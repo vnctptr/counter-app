@@ -17,8 +17,8 @@ struct CounterEditView: View {
     
     
     var body: some View {
-
-        Color.gray.opacity(0.1)
+        
+        Color(UIColor(red: 28.00 / 255.0, green: 28.00 / 255.0, blue: 30.00 / 255.0, alpha: 1.00))
             .edgesIgnoringSafeArea(.all)
             .overlay(
                 VStack {
@@ -40,8 +40,9 @@ struct CounterEditView: View {
                         .background(
                             RoundedRectangle(cornerRadius: 15)
                                 .fill(colorScheme == .dark ? Color(UIColor(red: 24.00 / 255.0, green: 24.00 / 255.0, blue: 25.00 / 255.0, alpha: 1.00)) : Color.white)                        ).padding(20)
-                Spacer()
+                    Spacer()
                 }
-
-            )   }
+                
+            ) 
+    }
 }
