@@ -16,7 +16,7 @@ struct CounterCreateView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
     
-    @StateObject private var model = Model()
+    @EnvironmentObject private var model: Model
     
     var body: some View {
         

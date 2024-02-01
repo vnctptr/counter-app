@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CounterList: View {
     @State private var selectedCounter: CounterItem?
-    @StateObject private var model = Model()
+    @EnvironmentObject private var model: Model
     
     var body: some View {
         ScrollView {
