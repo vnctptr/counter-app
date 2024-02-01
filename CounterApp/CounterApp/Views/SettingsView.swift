@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
 
         Color.gray.opacity(0.1)
@@ -33,7 +35,7 @@ struct SettingsView: View {
                     }.padding(20)
                         .background(
                             RoundedRectangle(cornerRadius: 15)
-                                .fill(Color.white)
+                                .fill(colorScheme == .dark ? Color(UIColor(red: 24.00 / 255.0, green: 24.00 / 255.0, blue: 25.00 / 255.0, alpha: 1.00)) : Color.gray)
                         ).padding(20)
                 Spacer()
                 }
