@@ -97,8 +97,8 @@ struct CounterItemView: View {
             
             HStack(alignment: .lastTextBaseline) {
                 Text(String(counter.count)).font(.system(size: 50)).fontWeight(.semibold)
-                let truncatedText = counter.name.prefix(TRUNCATED_NAME_LENGTH) + (counter.name.count > TRUNCATED_NAME_LENGTH ? "..." : "")
-                Text(truncatedText)
+                let truncatedName = counter.name.prefix(TRUNCATED_NAME_LENGTH) + (counter.name.count > TRUNCATED_NAME_LENGTH ? "..." : "")
+                Text(truncatedName)
                     .font(.system(size: 20))
                     .padding(.leading, 10)
                 Spacer()
