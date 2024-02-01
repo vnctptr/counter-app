@@ -22,6 +22,7 @@ struct CounterList: View {
                             selectedCounter = counter
                         }
                 }
+            }
             .task {
                 do {
                     try await model.populateCounters()
