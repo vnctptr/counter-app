@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CounterDetailView: View {
-    let counter: Counter
+    let counter: CounterItem
     var body: some View {
         
         VStack {

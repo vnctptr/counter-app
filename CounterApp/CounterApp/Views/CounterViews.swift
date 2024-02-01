@@ -9,17 +9,32 @@ import SwiftUI
 
 
 struct CounterList: View {
-    let counters = sampleCounters
-    @State private var selectedCounter: Counter?
+    let sample_counters = sampleCounters
+    @State private var selectedCounter: CounterItem?
+    @StateObject private var model = Model()
     var body: some View {
         
+        
         VStack(spacing: 15) {
-            ForEach(counters) { counter in
-                CounterItemView(counter: counter).padding(.horizontal, 25)
-                    .onTapGesture {
-                        selectedCounter = counter
-                    }
+            VStack {
+                ForEach(model.counters, id: \.recordId) { counter in
+                    CounterItemView(counter: counter).padding(.horizontal, 25)
+                        .onTapGesture {
+                            selectedCounter = counter
+                        }
+                }
+                List(model.counters, id: \.recordId) { counterItem in
+                    Text(counterItem.name)
+                }}
+            .task {
+                do {
+                    try await model.populateCounters()
+                }
+                catch {
+                    print(error)
+                }
             }
+
         }.sheet(item: $selectedCounter) { selectedCounter in
             CounterDetailSheetView(counter: selectedCounter)
                 .presentationDetents([.medium])
@@ -29,7 +44,7 @@ struct CounterList: View {
 }
 
 struct CounterDetailSheetView: View {
-    let counter: Counter
+    let counter: CounterItem
     
     var body: some View {
         TabView {
@@ -48,7 +63,7 @@ struct CounterDetailSheetView: View {
 }
 
 struct CounterItemView: View {
-    let counter: Counter
+    let counter: CounterItem
     
     var body: some View {
         ZStack {

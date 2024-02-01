@@ -15,6 +15,5 @@ struct CounterAppApp: App {
         WindowGroup {
             ContentView()
         }
-
     }
 }

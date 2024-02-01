@@ -14,10 +14,22 @@ enum CounterRecordKeys: String {
     case count
 }
 
-struct CounterItem {
+struct CounterItem: Identifiable {
+    var id = UUID()
     var recordId: CKRecord.ID?
     let name: String
     let count: Int
+}
+
+extension CounterItem {
+    init?(record: CKRecord) {
+        guard let name = record[CounterRecordKeys.name.rawValue] as? String,
+              let count = record[CounterRecordKeys.count.rawValue] as? Int else { 
+            return nil
+        }
+        
+        self.init(recordId: record.recordID, name: name, count: count)
+    }
 }
 
 extension CounterItem {
