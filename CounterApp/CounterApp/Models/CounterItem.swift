@@ -17,8 +17,8 @@ enum CounterRecordKeys: String {
 struct CounterItem: Identifiable {
     var id = UUID()
     var recordId: CKRecord.ID?
-    let name: String
-    let count: Int
+    var name: String
+    var count: Int
 }
 
 extension CounterItem {

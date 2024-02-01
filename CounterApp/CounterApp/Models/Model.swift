@@ -19,8 +19,22 @@ class Model: ObservableObject {
     }
     
     func addCounter(counterItem: CounterItem) async throws {
-        _ = try await db.save(counterItem.record)
+        let record = try await db.save(counterItem.record)
+        guard let counter = CounterItem(record: record) else { return }
+        countersDictionary[counter.recordId!] = counter
+    }
+    
+    func updateCounter(editedCounterItem: CounterItem) async throws {
+        countersDictionary[editedCounterItem.recordId!]?.count = editedCounterItem.count
         
+        do {
+            let record = try await db.record(for: editedCounterItem.recordId!)
+            record[CounterRecordKeys.count.rawValue] = editedCounterItem.count
+            try await db.save(record)
+        } catch {
+            // TODO: throw an error to tell the user that something has happened and the update was not successful
+            countersDictionary[editedCounterItem.recordId!] = editedCounterItem
+        }
     }
     
     func populateCounters() async throws {

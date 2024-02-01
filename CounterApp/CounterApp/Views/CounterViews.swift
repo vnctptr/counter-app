@@ -12,11 +12,21 @@ struct CounterList: View {
     @State private var selectedCounter: CounterItem?
     @EnvironmentObject private var model: Model
     
+    private func updateCounter(counterItem: CounterItem) {
+        Task {
+            do {
+                try await model.updateCounter(editedCounterItem: counterItem)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 15) {
                 ForEach(model.counters, id: \.recordId) { counter in
-                    CounterItemView(counter: counter)
+                    CounterItemView(counter: counter, onUpdate: updateCounter)
                         .padding(.horizontal, 25)
                         .onTapGesture {
                             selectedCounter = counter
@@ -60,6 +70,7 @@ struct CounterDetailSheetView: View {
 
 struct CounterItemView: View {
     let counter: CounterItem
+    let onUpdate: (CounterItem) -> Void
     
     var body: some View {
         ZStack {
@@ -71,6 +82,13 @@ struct CounterItemView: View {
                 Text(counter.name).font(.system(size: 20)).padding(.leading, 10)
                 Spacer()
                 CounterButton(imageName: "plus.circle.fill")
+                    .onTapGesture{
+                        print(counter.count)
+                        var counterItemToUpdate = counter
+                        counterItemToUpdate.count += 1
+                        print(counterItemToUpdate.count)
+                        onUpdate(counterItemToUpdate)
+                    }
                     .padding(10)
             }
             .padding(15)
