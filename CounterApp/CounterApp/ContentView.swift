@@ -18,7 +18,7 @@ struct ContentView: View {
             VStack {
                 CounterList()
                 Spacer()
-            }.background(colorScheme == .dark ? Color(UIColor(red: 14.00 / 255.0, green: 14.00 / 255.0, blue: 15.00 / 255.0, alpha: 1.00)) : Color.white)
+            }.background(colorScheme == .dark ? Color.bgPrimary : Color.white)
                 .toolbar {
                     ToolbarItem {
                         NavigationLink(destination: CounterCreateView()) {
