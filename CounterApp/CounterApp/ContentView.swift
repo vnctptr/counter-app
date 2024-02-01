@@ -14,7 +14,7 @@ struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        NavigationSplitView {
+        NavigationView {
             VStack {
                 CounterList()
                 Spacer()
@@ -31,9 +31,8 @@ struct ContentView: View {
                         }
                     }
                 }
-        } detail: {
-            Text("Select an item")
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
+
     }
 }
 
