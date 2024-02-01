@@ -12,7 +12,9 @@ struct CounterCreateView: View {
     @State private var counterName: String = ""
     @State private var selectedColor = Color.blue
     @State private var itemTitle: String = ""
+    
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.presentationMode) var presentationMode
     
     @StateObject private var model = Model()
     
@@ -41,7 +43,9 @@ struct CounterCreateView: View {
                         Task {
                             try await model.addCounter(counterItem: counterItem)
                         }
-                    }) {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                    ) {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(colorScheme == .dark ? Color(UIColor(red: 24.00 / 255.0, green: 24.00 / 255.0, blue: 25.00 / 255.0, alpha: 1.00)) : Color.gray)
                             .frame(height: 50)
