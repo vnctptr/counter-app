@@ -24,11 +24,11 @@ struct CounterCreateView: View {
             .edgesIgnoringSafeArea(.all)
             .overlay(
                 VStack {
-                    Text("Create counter")
+                    Text("Create Counter")
                         .font(.headline)
                         .padding(.top, 25)
                     VStack (spacing: 20){
-                        TextField("Counter title", text: $counterName)
+                        TextField("Counter Title", text: $counterName)
                         ColorPicker("Select Color", selection: $selectedColor)
                     }.padding(20)
                         .background(

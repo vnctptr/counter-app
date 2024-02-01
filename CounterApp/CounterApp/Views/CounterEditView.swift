@@ -22,11 +22,11 @@ struct CounterEditView: View {
             .edgesIgnoringSafeArea(.all)
             .overlay(
                 VStack {
-                    Text("Edit counter")
+                    Text("Edit Counter")
                         .font(.headline)
                         .padding(.top, 25)
                     VStack (spacing: 20){
-                        TextField("Counter title", text: $itemTitle)
+                        TextField("Counter Title", text: $itemTitle)
                         ColorPicker("Select Color", selection: $selectedColor)
                         HStack {
                             Text("Archive")
