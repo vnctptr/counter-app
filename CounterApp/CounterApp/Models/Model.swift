@@ -19,7 +19,7 @@ class Model: ObservableObject {
     }
     
     func addCounter(counterItem: CounterItem) async throws {
-        let record = try await db.save(counterItem.record)
+        _ = try await db.save(counterItem.record)
         
     }
     
