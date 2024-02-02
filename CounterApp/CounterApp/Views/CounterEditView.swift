@@ -15,12 +15,7 @@ struct CounterEditView: View {
     
     @Environment(\.colorScheme) var colorScheme
     
-    
     var body: some View {
-        
-        Color(UIColor(red: 28.00 / 255.0, green: 28.00 / 255.0, blue: 30.00 / 255.0, alpha: 1.00))
-            .edgesIgnoringSafeArea(.all)
-            .overlay(
                 VStack {
                     Text("Edit Counter")
                         .font(.headline)
@@ -39,10 +34,10 @@ struct CounterEditView: View {
                     }.padding(20)
                         .background(
                             RoundedRectangle(cornerRadius: 15)
-                                .fill(colorScheme == .dark ? Color.bgSecondary : Color.white)                        ).padding(20)
+                                .fill(colorScheme == .dark ? Color.textInputGrey : Color.white)
+                        )
+                        .padding(20)
                     Spacer()
                 }
-                
-            )
     }
 }

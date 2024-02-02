@@ -19,49 +19,46 @@ struct CounterCreateView: View {
     @EnvironmentObject private var model: Model
     
     var body: some View {
-        
-        Color.gray.opacity(0.1)
-            .edgesIgnoringSafeArea(.all)
-            .overlay(
-                VStack {
-                    Text("Create Counter")
-                        .font(.headline)
-                        .padding(.top, 25)
-                    VStack (spacing: 20){
-                        TextField("Counter Title", text: $counterName)
-                        ColorPicker("Select Color", selection: $selectedColor)
-                    }.padding(20)
-                        .background(
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(colorScheme == .dark ? Color.bgSecondary : Color.white)
-                            
-                        ).padding(20)
-                    Spacer()
+        VStack {
+            Text("Create Counter")
+                .font(.headline)
+                .padding(.top, 25)
+            VStack (spacing: 20){
+                TextField("Counter Title", text: $counterName)
+                ColorPicker("Select Color", selection: $selectedColor)
+            }.padding(20)
+                .background(
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(colorScheme == .dark ? Color.bgSecondary : Color.white)
                     
-                    Button(action: {
-                        let counterItem = CounterItem(name: counterName, count: 0, color: selectedColor)
-                        Task {
-                            try await model.addCounter(counterItem: counterItem)
-                        }
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                    ) {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(colorScheme == .dark ? Color.bgSecondary : Color.gray)
-                            .frame(height: 50)
-                            .overlay(
-                                HStack {
-                                    Image(systemName: "plus.circle.fill")
-                                        .font(.headline)
-                                    Text("Add Counter")
-                                        .font(.headline)
-                                }
-                                
-                            )
-                            .foregroundColor(.white)
-                    }.padding(30)
-                    
+                ).padding(20)
+            Spacer()
+            
+            Button(action: {
+                let counterItem = CounterItem(name: counterName, count: 0, color: selectedColor)
+                Task {
+                    try await model.addCounter(counterItem: counterItem)
                 }
-                
-            )   }
+                presentationMode.wrappedValue.dismiss()
+            }
+            ) {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(colorScheme == .dark ? Color.bgSecondary : Color.gray)
+                    .frame(height: 50)
+                    .overlay(
+                        HStack {
+                            Image(systemName: "plus.circle.fill")
+                                .font(.headline)
+                            Text("Add Counter")
+                                .font(.headline)
+                        }
+                        
+                    )
+                    .foregroundColor(.white)
+            }.padding(30)
+            
+        }.background(colorScheme == .dark ? Color.bgPrimary : Color.white)
+        
+    }
+        
 }
