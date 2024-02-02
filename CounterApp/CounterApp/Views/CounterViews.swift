@@ -92,7 +92,7 @@ struct CounterItemView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(.gray)
+                .foregroundColor(counter.color)
                 .frame(height: 100)
             
             HStack(alignment: .lastTextBaseline) {

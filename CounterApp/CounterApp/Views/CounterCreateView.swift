@@ -10,7 +10,7 @@ import SwiftUI
 struct CounterCreateView: View {
     @State private var count = 0
     @State private var counterName: String = ""
-    @State private var selectedColor = Color.blue
+    @State private var selectedColor = Color.coralAccent
     @State private var itemTitle: String = ""
     
     @Environment(\.colorScheme) var colorScheme
@@ -39,7 +39,7 @@ struct CounterCreateView: View {
                     Spacer()
                     
                     Button(action: {
-                        let counterItem = CounterItem(name: counterName, count: 0)
+                        let counterItem = CounterItem(name: counterName, count: 0, color: selectedColor)
                         Task {
                             try await model.addCounter(counterItem: counterItem)
                         }
