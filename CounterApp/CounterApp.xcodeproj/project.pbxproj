@@ -79,7 +79,7 @@
 			children = (
 				EF35A7722B67507000BD5446 /* CounterApp.entitlements */,
 				EFC071DA2B58474D00358DB3 /* CounterAppApp.swift */,
-				EFFE5F962B6C290E0029EAD6 /* Constants */,
+				EFFE5F962B6C290E0029EAD6 /* Utils */,
 				EFE9499C2B6209E400DD9ADB /* Views */,
 				EF4D5A8D2B5E38160007D59C /* Models */,
 				EFC071DC2B58474D00358DB3 /* ContentView.swift */,
@@ -109,12 +109,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		EFFE5F962B6C290E0029EAD6 /* Constants */ = {
+		EFFE5F962B6C290E0029EAD6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				EFFE5F972B6C29210029EAD6 /* Constants.swift */,
 			);
-			path = Constants;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

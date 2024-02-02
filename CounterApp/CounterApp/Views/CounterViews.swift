@@ -75,7 +75,7 @@ struct CounterDetailSheetView: View {
                 .tabItem() {
                     Image(systemName: "number.circle.fill")
                 }
-            CounterEditView()
+            CounterEditView(counter: counter, onUpdate: updateCounter)
                 .tabItem() {
                     Image(systemName: "pencil")
                 }

@@ -12,6 +12,9 @@ struct CounterEditView: View {
     @State private var counterName = "Counter"
     @State private var selectedColor = Color.blue
     @State private var itemTitle: String = ""
+    @EnvironmentObject private var model: Model
+    @State var counter: CounterItem
+    let onUpdate: (CounterItem) -> Void
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -21,8 +24,8 @@ struct CounterEditView: View {
                         .font(.headline)
                         .padding(.top, 25)
                     VStack (spacing: 20){
-                        TextField("Counter Title", text: $itemTitle)
-                        ColorPicker("Select Color", selection: $selectedColor)
+                        TextField("Counter Title", text: $counter.name)
+                        ColorPicker("Select Color", selection: $counter.color)
                         HStack {
                             Text("Archive")
                             Spacer()
@@ -38,6 +41,26 @@ struct CounterEditView: View {
                         )
                         .padding(20)
                     Spacer()
+                    
+                    Button(action: {
+                        let counterItemToUpdate = counter
+                        print(counterItemToUpdate.name)
+                        print(counter.name)
+                        onUpdate(counterItemToUpdate)
+                    }
+                    ) {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(colorScheme == .dark ? Color.bgSecondary : Color.gray)
+                            .frame(height: 50)
+                            .overlay(
+                                HStack {
+                                    Text("Save Changes")
+                                        .font(.headline)
+                                }
+                                
+                            )
+                            .foregroundColor(.white)
+                    }.padding(30)
                 }
     }
 }
