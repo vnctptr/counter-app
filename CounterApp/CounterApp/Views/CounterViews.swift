@@ -7,20 +7,22 @@
 
 import SwiftUI
 
+private func updateCounter(counterItem: CounterItem, model: Model) {
+    
+    Task {
+        do {
+            try await model.updateCounter(editedCounterItem: counterItem)
+        } catch {
+            print(error)
+        }
+    }
+}
+
 
 struct CounterList: View {
     @State private var selectedCounter: CounterItem?
     @EnvironmentObject private var model: Model
-    
-    private func updateCounter(counterItem: CounterItem) {
-        Task {
-            do {
-                try await model.updateCounter(editedCounterItem: counterItem)
-            } catch {
-                print(error)
-            }
-        }
-    }
+
     
     var body: some View {
         ScrollView {
@@ -56,7 +58,7 @@ struct CounterDetailSheetView: View {
     
     @State var counter: CounterItem
     
-    let onUpdate: (CounterItem) -> Void
+    let onUpdate: (CounterItem, Model) -> Void
     
     private func updateCounter(counterItem: CounterItem) {
         Task {
@@ -85,8 +87,9 @@ struct CounterDetailSheetView: View {
 }
 
 struct CounterItemView: View {
+    @EnvironmentObject private var model: Model
     let counter: CounterItem
-    let onUpdate: (CounterItem) -> Void
+    let onUpdate: (CounterItem, Model) -> Void
     let TRUNCATED_NAME_LENGTH = 25
     
     var body: some View {
@@ -108,7 +111,7 @@ struct CounterItemView: View {
                     .onTapGesture {
                         var counterItemToUpdate = counter
                         counterItemToUpdate.count += 1
-                        onUpdate(counterItemToUpdate)
+                        onUpdate(counterItemToUpdate, model)
                     }
                     .padding(10)
             }
