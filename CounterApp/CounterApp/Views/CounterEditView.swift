@@ -15,52 +15,54 @@ struct CounterEditView: View {
     @EnvironmentObject private var model: Model
     @State var counter: CounterItem
     let onUpdate: (CounterItem) -> Void
+    @State private var isCreateHabitSheetPresented = false
     
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-                VStack {
-                    Text("Edit Counter")
-                        .font(.headline)
-                        .padding(.top, 25)
-                    VStack (spacing: 20){
-                        TextField("Counter Title", text: $counter.name)
-                        ColorPicker("Select Color", selection: $counter.color)
-                        HStack {
-                            Text("Archive")
-                            Spacer()
-                        }
-                        HStack {
-                            Text("Delete").foregroundColor(.red)
-                            Spacer()
-                        }
-                    }.padding(20)
-                        .background(
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(colorScheme == .dark ? Color.textInputGrey : Color.white)
-                        )
-                        .padding(20)
+        VStack {
+            Text("Edit Counter")
+                .font(.headline)
+                .padding(.top, 25)
+            VStack (spacing: 20){
+                TextField("Counter Title", text: $counter.name)
+                ColorPicker("Select Color", selection: $counter.color)
+                HStack {
+                    Text("Archive")
                     Spacer()
-                    
-                    Button(action: {
-                        let counterItemToUpdate = counter
-                        print(counterItemToUpdate.name)
-                        print(counter.name)
-                        onUpdate(counterItemToUpdate)
-                    }
-                    ) {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(colorScheme == .dark ? Color.bgSecondary : Color.gray)
-                            .frame(height: 50)
-                            .overlay(
-                                HStack {
-                                    Text("Save Changes")
-                                        .font(.headline)
-                                }
-                                
-                            )
-                            .foregroundColor(.white)
-                    }.padding(30)
                 }
+                HStack {
+                    Text("Delete").foregroundColor(.red)
+                    Spacer()
+                }
+            }.padding(20)
+                .background(
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(colorScheme == .dark ? Color.textInputGrey : Color.white)
+                )
+                .padding(20)
+            Spacer()
+            
+            Button(action: {
+                let counterItemToUpdate = counter
+                print(counterItemToUpdate.name)
+                print(counter.name)
+                onUpdate(counterItemToUpdate)
+            }
+            ) {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(colorScheme == .dark ? Color.bgSecondary : Color.gray)
+                    .frame(height: 50)
+                    .overlay(
+                        HStack {
+                            Text("Save Changes")
+                                .font(.headline)
+                        }
+                        
+                    )
+                    .foregroundColor(.white)
+            }.padding(30)
+        }
+
     }
 }

@@ -9,8 +9,11 @@ import SwiftUI
 
 struct CounterDetailView: View {
     @State var counter: CounterItem
+    @State private var isEditSheetPresented = false
+
     @Environment(\.colorScheme) var colorScheme
     let onUpdate: (CounterItem) -> Void
+    
     
     var body: some View {
         
@@ -20,6 +23,7 @@ struct CounterDetailView: View {
                 Menu() {
                     Button(action: {
                         print("Edit")
+                        isEditSheetPresented.toggle()
                     }) {
                         Text("Edit")
                     }
@@ -70,7 +74,13 @@ struct CounterDetailView: View {
                         let counterItemToUpdate = counter
                         onUpdate(counterItemToUpdate)
                     }
-            }.padding(.vertical, 20)
+            }.sheet(isPresented: $isEditSheetPresented) {
+                CounterEditView(counter: counter, onUpdate: onUpdate)
+                    .presentationDetents([.large])
+                    .presentationCornerRadius(30)
+            }
+            
+            .padding(.vertical, 20)
             Spacer(minLength: 20)
         }
     }
