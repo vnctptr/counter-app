@@ -72,17 +72,7 @@ struct CounterDetailSheetView: View {
     
     
     var body: some View {
-        TabView {
-            CounterDetailView(counter: counter, onUpdate: updateCounter)
-                .tabItem() {
-                    Image(systemName: "number.circle.fill")
-                }
-            CounterEditView(counter: counter, onUpdate: updateCounter)
-                .tabItem() {
-                    Image(systemName: "pencil")
-                }
-            
-        }.accentColor(colorScheme == .dark ? Color.white : Color.black)
+        CounterDetailView(counter: counter, onUpdate: updateCounter)
     }
 }
 

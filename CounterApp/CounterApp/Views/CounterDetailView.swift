@@ -9,12 +9,39 @@ import SwiftUI
 
 struct CounterDetailView: View {
     @State var counter: CounterItem
+    @Environment(\.colorScheme) var colorScheme
     let onUpdate: (CounterItem) -> Void
     
     var body: some View {
         
         VStack {
-            Spacer()
+            HStack {
+                Spacer()
+                Menu() {
+                    Button(action: {
+                        print("Edit")
+                    }) {
+                        Text("Edit")
+                    }
+                    
+                    Button(action: {
+                        print("Archive")
+                    }) {
+                        Text("Archive")
+                    }                    
+                    
+                    Button(action: {
+                        print("Delete")
+                    }) {
+                        Text("Delete")
+                    }
+
+                } label: {
+                    Image(systemName: "ellipsis.circle.fill").font(.system(size: MEDIUM_ICON))
+                }.accentColor(colorScheme == .dark ? .white : .black)
+            }
+            .padding(.top, 30)
+            .padding(.trailing, 30)
             Text(String(counter.count))
                 .font(.system(size: EXTRA_LARGE_TITLE))
                 .fontWeight(.semibold)
@@ -43,7 +70,7 @@ struct CounterDetailView: View {
                         onUpdate(counterItemToUpdate)
                     }
             }.padding(.vertical, 20)
-            Spacer()
+            Spacer(minLength: 20)
         }
     }
     
