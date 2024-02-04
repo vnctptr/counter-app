@@ -31,10 +31,10 @@ struct SettingsView: View {
             }.padding(20)
                 .background(
                     RoundedRectangle(cornerRadius: 15)
-                        .fill(colorScheme == .dark ? Color.bgSecondary : Color.gray)
+                        .fill(colorScheme == .dark ? Color.bgSecondary : Color.white)
                 ).padding(20)
             Spacer()
-        }.background(colorScheme == .dark ? Color.bgPrimary : Color.white)
+        }.background(colorScheme == .dark ? Color.bgPrimary : Color.bgSecondary)
         
     }
 }

@@ -43,7 +43,7 @@ struct CounterCreateView: View {
             }
             ) {
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(colorScheme == .dark ? Color.bgSecondary : Color.gray)
+                    .fill(colorScheme == .dark ? Color.bgSecondary : Color.black)
                     .frame(height: 50)
                     .overlay(
                         HStack {
@@ -57,7 +57,7 @@ struct CounterCreateView: View {
                     .foregroundColor(.white)
             }.padding(30)
             
-        }.background(colorScheme == .dark ? Color.bgPrimary : Color.white)
+        }.background(colorScheme == .dark ? Color.bgPrimary : Color.bgSecondary)
         
     }
         
