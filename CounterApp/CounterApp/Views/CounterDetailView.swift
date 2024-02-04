@@ -42,6 +42,7 @@ struct CounterDetailView: View {
             }
             .padding(.top, 30)
             .padding(.trailing, 30)
+            Spacer()
             Text(String(counter.count))
                 .font(.system(size: EXTRA_LARGE_TITLE))
                 .fontWeight(.semibold)
