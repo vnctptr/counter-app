@@ -46,7 +46,7 @@ struct CounterList: View {
         }
         .sheet(item: $selectedCounter) { selectedCounter in
             CounterDetailSheetView(counter: selectedCounter, onUpdate: updateCounter)
-                .presentationDetents([.height(450)])
+                .presentationDetents([.height(500)])
                 .presentationCornerRadius(30)
         }
     }
