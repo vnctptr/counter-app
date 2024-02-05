@@ -68,11 +68,21 @@ struct CounterDetailSheetView: View {
                 print(error)
             }
         }
+    }    
+    
+    private func deleteCounter(counterItem: CounterItem) {
+        Task {
+            do {
+                try await model.deleteCounter(counterItem: counterItem)
+            } catch {
+                print(error)
+            }
+        }
     }
     
     
     var body: some View {
-        CounterDetailView(counter: counter, onUpdate: updateCounter)
+        CounterDetailView(counter: counter, onUpdate: updateCounter, onDelete: deleteCounter)
     }
 }
 

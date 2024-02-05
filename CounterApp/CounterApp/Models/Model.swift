@@ -24,6 +24,18 @@ class Model: ObservableObject {
         countersDictionary[counter.recordId!] = counter
     }
     
+    func deleteCounter(counterItem: CounterItem) async throws {
+            guard let recordId = counterItem.recordId else { return }
+
+            do {
+                try await db.deleteRecord(withID: recordId)
+                countersDictionary[recordId] = nil
+            } catch {
+                print("Error deleting counter: \(error)")
+                throw error
+            }
+        }
+    
     func updateCounter(editedCounterItem: CounterItem) async throws {
         countersDictionary[editedCounterItem.recordId!]?.count = editedCounterItem.count   
         countersDictionary[editedCounterItem.recordId!]?.name = editedCounterItem.name

@@ -12,7 +12,10 @@ struct CounterDetailView: View {
     @State private var isEditSheetPresented = false
 
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.presentationMode) var presentationMode
+    
     let onUpdate: (CounterItem) -> Void
+    let onDelete: (CounterItem) -> Void
     
     
     var body: some View {
@@ -25,19 +28,21 @@ struct CounterDetailView: View {
                         print("Edit")
                         isEditSheetPresented.toggle()
                     }) {
-                        Text("Edit")
+                        Label("Edit", systemImage: "pencil")
                     }
                     
                     Button(action: {
                         print("Archive")
                     }) {
-                        Text("Archive")
-                    }                    
+                        Label("Archive", systemImage: "archivebox.fill")
+                    }
                     
-                    Button(action: {
-                        print("Delete")
+                    Button(role: .destructive, action: {
+                        let counterItemToDelete = counter
+                        onDelete(counterItemToDelete)
+                        presentationMode.wrappedValue.dismiss()
                     }) {
-                        Text("Delete")
+                        Label("Delete", systemImage: "trash.fill")
                     }
 
                 } label: {
