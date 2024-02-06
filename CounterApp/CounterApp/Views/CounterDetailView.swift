@@ -9,45 +9,17 @@ import SwiftUI
 
 struct CounterDetailView: View {
     @State var counter: CounterItem
-    @State private var isEditSheetPresented = false
-
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.presentationMode) var presentationMode
-    
+
     let onUpdate: (CounterItem) -> Void
     let onDelete: (CounterItem) -> Void
-    
     
     var body: some View {
         
         VStack {
             HStack {
                 Spacer()
-                Menu() {
-                    Button(action: {
-                        print("Edit")
-                        isEditSheetPresented.toggle()
-                    }) {
-                        Label("Edit", systemImage: "pencil")
-                    }
-                    
-                    Button(action: {
-                        print("Archive")
-                    }) {
-                        Label("Archive", systemImage: "archivebox.fill")
-                    }
-                    
-                    Button(role: .destructive, action: {
-                        let counterItemToDelete = counter
-                        onDelete(counterItemToDelete)
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Label("Delete", systemImage: "trash.fill")
-                    }
-
-                } label: {
-                    Image(systemName: "ellipsis.circle.fill").font(.system(size: MEDIUM_ICON))
-                }.accentColor(colorScheme == .dark ? .white : .black)
+                CounterDetailMenuView(counter: counter, onUpdate: onUpdate, onDelete: onDelete)
             }
             .padding(.top, 30)
             .padding(.trailing, 30)
@@ -79,10 +51,6 @@ struct CounterDetailView: View {
                         let counterItemToUpdate = counter
                         onUpdate(counterItemToUpdate)
                     }
-            }.sheet(isPresented: $isEditSheetPresented) {
-                CounterEditView(counter: counter, onUpdate: onUpdate)
-                    .presentationDetents([.large])
-                    .presentationCornerRadius(30)
             }
             
             .padding(.vertical, 20)
@@ -90,4 +58,47 @@ struct CounterDetailView: View {
         }
     }
     
+}
+
+struct CounterDetailMenuView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.colorScheme) var colorScheme
+    @State private var isEditSheetPresented = false
+    let counter: CounterItem
+    let onUpdate: (CounterItem) -> Void
+    let onDelete: (CounterItem) -> Void
+    
+    
+    var body: some View {
+        Menu() {
+            Button(action: {
+                print("Edit")
+                isEditSheetPresented.toggle()
+            }) {
+                Label("Edit", systemImage: "pencil")
+            }
+            
+            Button(action: {
+                print("Archive")
+            }) {
+                Label("Archive", systemImage: "archivebox.fill")
+            }
+            
+            Button(role: .destructive, action: {
+                let counterItemToDelete = counter
+                onDelete(counterItemToDelete)
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                Label("Delete", systemImage: "trash.fill")
+            }
+
+        } label: {
+            Image(systemName: "ellipsis.circle.fill").font(.system(size: MEDIUM_ICON))
+        }.accentColor(colorScheme == .dark ? .white : .black)
+            .sheet(isPresented: $isEditSheetPresented) {
+                CounterEditView(counter: counter, onUpdate: onUpdate)
+                    .presentationDetents([.large])
+                    .presentationCornerRadius(30)
+            }
+    }
 }
