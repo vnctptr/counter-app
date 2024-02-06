@@ -35,7 +35,7 @@ struct CounterCreateView: View {
             Spacer()
             
             Button(action: {
-                let counterItem = CounterItem(name: counterName, count: 0, color: selectedColor)
+                let counterItem = CounterItem(name: counterName == "" ? "Counter": counterName, count: 0, color: selectedColor)
                 Task {
                     try await model.addCounter(counterItem: counterItem)
                 }
