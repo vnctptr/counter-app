@@ -8,16 +8,12 @@
 import SwiftUI
 
 struct CounterEditView: View {
-    @State private var count = 0
-    @State private var counterName = "Counter"
-    @State private var selectedColor = Color.blue
-    @State private var itemTitle: String = ""
-    @EnvironmentObject private var model: Model
     @Binding var counter: CounterItem
     let onUpdate: (CounterItem) -> Void
-    @State private var isCreateHabitSheetPresented = false
+    @EnvironmentObject private var model: Model
     
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
@@ -48,6 +44,7 @@ struct CounterEditView: View {
                 print(counterItemToUpdate.name)
                 print(counter.name)
                 onUpdate(counterItemToUpdate)
+                presentationMode.wrappedValue.dismiss()
             }
             ) {
                 RoundedRectangle(cornerRadius: 10)
