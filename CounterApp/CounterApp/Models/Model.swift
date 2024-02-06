@@ -7,6 +7,7 @@
 
 import Foundation
 import CloudKit
+import SwiftUI
 
 @MainActor
 class Model: ObservableObject {
@@ -21,7 +22,9 @@ class Model: ObservableObject {
     func addCounter(counterItem: CounterItem) async throws {
         let record = try await db.save(counterItem.record)
         guard let counter = CounterItem(record: record) else { return }
-        countersDictionary[counter.recordId!] = counter
+        withAnimation {
+            countersDictionary[counter.recordId!] = counter
+        }
     }
     
     func deleteCounter(counterItem: CounterItem) async throws {
@@ -29,7 +32,9 @@ class Model: ObservableObject {
 
             do {
                 try await db.deleteRecord(withID: recordId)
-                countersDictionary[recordId] = nil
+                withAnimation {
+                    countersDictionary[recordId] = nil
+                }
             } catch {
                 print("Error deleting counter: \(error)")
                 throw error
