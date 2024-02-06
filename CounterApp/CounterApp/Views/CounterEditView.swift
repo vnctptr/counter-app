@@ -41,8 +41,6 @@ struct CounterEditView: View {
             
             Button(action: {
                 let counterItemToUpdate = counter
-                print(counterItemToUpdate.name)
-                print(counter.name)
                 onUpdate(counterItemToUpdate)
                 presentationMode.wrappedValue.dismiss()
             }

@@ -11,7 +11,6 @@ struct CounterCreateView: View {
     @State private var count = 0
     @State private var counterName: String = ""
     @State private var selectedColor = Color.coralAccent
-    @State private var itemTitle: String = ""
     
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
