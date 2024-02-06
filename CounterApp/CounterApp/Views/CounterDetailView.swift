@@ -64,13 +64,14 @@ struct CounterDetailMenuView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
     @State private var isEditSheetPresented = false
+    @State private var isDeleteConfirmationPresented = false
+    
     @Binding var counter: CounterItem
     let onUpdate: (CounterItem) -> Void
     let onDelete: (CounterItem) -> Void
     
-    
     var body: some View {
-        Menu() {
+        Menu {
             Button(action: {
                 print("Edit")
                 isEditSheetPresented.toggle()
@@ -85,20 +86,27 @@ struct CounterDetailMenuView: View {
             }
             
             Button(role: .destructive, action: {
-                let counterItemToDelete = counter
-                onDelete(counterItemToDelete)
-                presentationMode.wrappedValue.dismiss()
+                isDeleteConfirmationPresented.toggle()
             }) {
                 Label("Delete", systemImage: "trash.fill")
             }
-
         } label: {
             Image(systemName: "ellipsis.circle.fill").font(.system(size: MEDIUM_ICON))
-        }.accentColor(colorScheme == .dark ? .white : .black)
-            .sheet(isPresented: $isEditSheetPresented) {
-                CounterEditView(counter: $counter, onUpdate: onUpdate)
-                    .presentationDetents([.large])
-                    .presentationCornerRadius(30)
+        }
+        .accentColor(colorScheme == .dark ? .white : .black)
+        .sheet(isPresented: $isEditSheetPresented) {
+            CounterEditView(counter: $counter, onUpdate: onUpdate)
+                .presentationDetents([.large])
+                .presentationCornerRadius(30)
+        }
+        .confirmationDialog("Delete Counter", isPresented: $isDeleteConfirmationPresented, actions: {
+            Button("Delete", role: .destructive) {
+                let counterItemToDelete = counter
+                onDelete(counterItemToDelete)
+                presentationMode.wrappedValue.dismiss()
             }
+            
+            Button("Cancel", role: .cancel) { }
+        })
     }
 }
