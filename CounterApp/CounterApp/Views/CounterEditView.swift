@@ -13,7 +13,7 @@ struct CounterEditView: View {
     @State private var selectedColor = Color.blue
     @State private var itemTitle: String = ""
     @EnvironmentObject private var model: Model
-    @State var counter: CounterItem
+    @Binding var counter: CounterItem
     let onUpdate: (CounterItem) -> Void
     @State private var isCreateHabitSheetPresented = false
     

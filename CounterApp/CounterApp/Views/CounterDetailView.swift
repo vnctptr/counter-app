@@ -19,7 +19,7 @@ struct CounterDetailView: View {
         VStack {
             HStack {
                 Spacer()
-                CounterDetailMenuView(counter: counter, onUpdate: onUpdate, onDelete: onDelete)
+                CounterDetailMenuView(counter: $counter, onUpdate: onUpdate, onDelete: onDelete)
             }
             .padding(.top, 30)
             .padding(.trailing, 30)
@@ -64,7 +64,7 @@ struct CounterDetailMenuView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
     @State private var isEditSheetPresented = false
-    let counter: CounterItem
+    @Binding var counter: CounterItem
     let onUpdate: (CounterItem) -> Void
     let onDelete: (CounterItem) -> Void
     
@@ -96,7 +96,7 @@ struct CounterDetailMenuView: View {
             Image(systemName: "ellipsis.circle.fill").font(.system(size: MEDIUM_ICON))
         }.accentColor(colorScheme == .dark ? .white : .black)
             .sheet(isPresented: $isEditSheetPresented) {
-                CounterEditView(counter: counter, onUpdate: onUpdate)
+                CounterEditView(counter: $counter, onUpdate: onUpdate)
                     .presentationDetents([.large])
                     .presentationCornerRadius(30)
             }
