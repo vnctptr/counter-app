@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CounterDetailView: View {
     @State var counter: CounterItem
+    @State private var isResetConfirmationPresented = false
     @Environment(\.colorScheme) var colorScheme
 
     let onUpdate: (CounterItem) -> Void
@@ -41,10 +42,17 @@ struct CounterDetailView: View {
                 CounterButton(imageName: "gobackward")
                     .onTapGesture {
                         //                    TODO: get confirmation from user to reset
-                        counter.count = 0
-                        let counterItemToUpdate = counter
-                        onUpdate(counterItemToUpdate)
+                        isResetConfirmationPresented.toggle()
                     }
+                    .confirmationDialog("Reset Counter", isPresented: $isResetConfirmationPresented, actions: {
+                        Button("Reset", role: .destructive) {
+                            counter.count = 0
+                            let counterItemToDelete = counter
+                            onUpdate(counterItemToDelete)
+                        }
+                        
+                        Button("Cancel", role: .cancel) { }
+                    })
                 CounterButton(imageName: "plus.circle.fill")
                     .onTapGesture {
                         counter.count += 1
