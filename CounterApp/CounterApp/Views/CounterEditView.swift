@@ -46,7 +46,7 @@ struct CounterEditView: View {
             }.padding(20)
                 .background(
                     RoundedRectangle(cornerRadius: 15)
-                        .fill(colorScheme == .dark ? .textInputGrey : .white)
+                        .fill(colorScheme == .dark ? .bgSecondary : .white)
                 )
                 .padding(20)
             Spacer()
@@ -58,7 +58,7 @@ struct CounterEditView: View {
             }
             ) {
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(colorScheme == .dark ? .bgSecondary : .gray)
+                    .fill(colorScheme == .dark ? .bgSecondary : .black)
                     .frame(height: 50)
                     .overlay(
                         HStack {
@@ -70,7 +70,7 @@ struct CounterEditView: View {
                     .foregroundColor(.white)
             }.padding(30)
         }
-        .background(.bgSecondary)
+        .background(colorScheme == .dark ? .bgPrimary : .bgSecondary)
         .confirmationDialog("Delete Counter", isPresented: $isDeleteConfirmationPresented, actions: {
             Button("Delete", role: .destructive) {
                 let counterItemToDelete = counter

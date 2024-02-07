@@ -28,7 +28,7 @@ struct CounterCreateView: View {
             }.padding(20)
                 .background(
                     RoundedRectangle(cornerRadius: 15)
-                        .fill(colorScheme == .dark ? Color.bgSecondary : Color.white)
+                        .fill(colorScheme == .dark ? .bgSecondary : .white)
                     
                 ).padding(20)
             Spacer()
