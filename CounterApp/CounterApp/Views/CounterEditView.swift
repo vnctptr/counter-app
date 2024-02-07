@@ -27,22 +27,6 @@ struct CounterEditView: View {
             VStack (spacing: 20){
                 TextField("Counter Title", text: $counter.name)
                 ColorPicker("Select Color", selection: $counter.color)
-                HStack {
-                    Button(action: {
-                        print("Archive")
-                    }) {
-                        Label("Archive", systemImage: "archivebox.fill")
-                    }
-                    Spacer()
-                }
-                HStack {
-                    Button(role: .destructive, action: {
-                        isDeleteConfirmationPresented.toggle()
-                    }) {
-                        Label("Delete", systemImage: "trash.fill")
-                    }
-                    Spacer()
-                }
             }.padding(20)
                 .background(
                     RoundedRectangle(cornerRadius: 15)
