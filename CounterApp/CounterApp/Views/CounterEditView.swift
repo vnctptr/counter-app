@@ -9,8 +9,12 @@ import SwiftUI
 
 struct CounterEditView: View {
     @Binding var counter: CounterItem
+    @State private var isDeleteConfirmationPresented = false
     let onUpdate: (CounterItem) -> Void
+    let onDelete: (CounterItem) -> Void
+    
     @EnvironmentObject private var model: Model
+    
     
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
@@ -24,11 +28,19 @@ struct CounterEditView: View {
                 TextField("Counter Title", text: $counter.name)
                 ColorPicker("Select Color", selection: $counter.color)
                 HStack {
-                    Text("Archive")
+                    Button(action: {
+                        print("Archive")
+                    }) {
+                        Label("Archive", systemImage: "archivebox.fill")
+                    }
                     Spacer()
                 }
                 HStack {
-                    Text("Delete").foregroundColor(.red)
+                    Button(role: .destructive, action: {
+                        isDeleteConfirmationPresented.toggle()
+                    }) {
+                        Label("Delete", systemImage: "trash.fill")
+                    }
                     Spacer()
                 }
             }.padding(20)
@@ -57,7 +69,15 @@ struct CounterEditView: View {
                     )
                     .foregroundColor(.white)
             }.padding(30)
-        }
+        }        .confirmationDialog("Delete Counter", isPresented: $isDeleteConfirmationPresented, actions: {
+            Button("Delete", role: .destructive) {
+                let counterItemToDelete = counter
+                onDelete(counterItemToDelete)
+                presentationMode.wrappedValue.dismiss()
+            }
+            
+            Button("Cancel", role: .cancel) { }
+        })
 
     }
 }

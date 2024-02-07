@@ -95,7 +95,7 @@ struct CounterDetailMenuView: View {
         }
         .accentColor(colorScheme == .dark ? .white : .black)
         .sheet(isPresented: $isEditSheetPresented) {
-            CounterEditView(counter: $counter, onUpdate: onUpdate)
+            CounterEditView(counter: $counter, onUpdate: onUpdate, onDelete: onDelete)
                 .presentationDetents([.large])
                 .presentationCornerRadius(30)
         }
