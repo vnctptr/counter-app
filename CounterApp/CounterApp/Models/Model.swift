@@ -44,11 +44,16 @@ class Model: ObservableObject {
     func updateCounter(editedCounterItem: CounterItem) async throws {
         countersDictionary[editedCounterItem.recordId!]?.count = editedCounterItem.count   
         countersDictionary[editedCounterItem.recordId!]?.name = editedCounterItem.name
+        countersDictionary[editedCounterItem.recordId!]?.archived = editedCounterItem.archived
         
         do {
             let record = try await db.record(for: editedCounterItem.recordId!)
             record[CounterRecordKeys.count.rawValue] = editedCounterItem.count
             record[CounterRecordKeys.name.rawValue] = editedCounterItem.name
+            record[CounterRecordKeys.archived.rawValue] = editedCounterItem.archived
+            withAnimation {
+                countersDictionary[editedCounterItem.recordId!] = nil
+            }
 
             try await db.save(record)
         } catch {
@@ -58,7 +63,8 @@ class Model: ObservableObject {
     }
     
     func populateCounters() async throws {
-        let query = CKQuery(recordType: CounterRecordKeys.type.rawValue, predicate: NSPredicate(value: true))
+        let predicate = NSPredicate(format: "%K == %@", CounterRecordKeys.archived.rawValue, NSNumber(value: false))
+        let query = CKQuery(recordType: CounterRecordKeys.type.rawValue, predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         let result = try await db.records(matching: query)
@@ -70,5 +76,4 @@ class Model: ObservableObject {
             countersDictionary[record.recordID] = CounterItem(record: record)
         }
     }
-    
 }

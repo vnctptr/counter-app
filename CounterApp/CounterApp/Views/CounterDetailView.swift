@@ -81,14 +81,17 @@ struct CounterDetailMenuView: View {
     var body: some View {
         Menu {
             Button(action: {
-                print("Edit")
                 isEditSheetPresented.toggle()
             }) {
                 Label("Edit", systemImage: "pencil")
             }
             
             Button(action: {
-                print("Archive")
+                counter.archived = true
+                let counterItemToUpdate = counter
+                onUpdate(counterItemToUpdate)
+                print(counterItemToUpdate.archived)
+                presentationMode.wrappedValue.dismiss()
             }) {
                 Label("Archive", systemImage: "archivebox.fill")
             }
