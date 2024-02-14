@@ -28,21 +28,21 @@ class Model: ObservableObject {
     }
     
     func deleteCounter(counterItem: CounterItem) async throws {
-            guard let recordId = counterItem.recordId else { return }
-
-            do {
-                try await db.deleteRecord(withID: recordId)
-                withAnimation {
-                    countersDictionary[recordId] = nil
-                }
-            } catch {
-                print("Error deleting counter: \(error)")
-                throw error
+        guard let recordId = counterItem.recordId else { return }
+        
+        do {
+            try await db.deleteRecord(withID: recordId)
+            withAnimation {
+                countersDictionary[recordId] = nil
             }
+        } catch {
+            print("Error deleting counter: \(error)")
+            throw error
         }
+    }
     
     func updateCounter(editedCounterItem: CounterItem) async throws {
-        countersDictionary[editedCounterItem.recordId!]?.count = editedCounterItem.count   
+        countersDictionary[editedCounterItem.recordId!]?.count = editedCounterItem.count
         countersDictionary[editedCounterItem.recordId!]?.name = editedCounterItem.name
         countersDictionary[editedCounterItem.recordId!]?.archived = editedCounterItem.archived
         
@@ -52,9 +52,12 @@ class Model: ObservableObject {
             record[CounterRecordKeys.name.rawValue] = editedCounterItem.name
             record[CounterRecordKeys.archived.rawValue] = editedCounterItem.archived
             withAnimation {
-                countersDictionary[editedCounterItem.recordId!] = nil
+                if (editedCounterItem.archived) {
+                    countersDictionary[editedCounterItem.recordId!] = nil
+                }
+                
             }
-
+            
             try await db.save(record)
         } catch {
             // TODO: throw an error to tell the user that something has happened and the update was not successful
