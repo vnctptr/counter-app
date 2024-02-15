@@ -9,4 +9,4 @@ import SwiftUI
 
 let MEDIUM_ICON = CGFloat(30)
 let LARGE_TITLE = CGFloat(50)
-let EXTRA_LARGE_TITLE = CGFloat(100)
+let EXTRA_LARGE_TITLE = CGFloat(110)
