@@ -62,7 +62,7 @@ struct CounterDetailView: View {
             }
             
             .padding(.vertical, 20)
-            Spacer(minLength: 20)
+            Spacer(minLength: 100)
         }
     }
     
