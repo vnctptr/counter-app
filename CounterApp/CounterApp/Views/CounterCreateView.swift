@@ -92,9 +92,9 @@ func colorComponentFrom(colorString: String, start: Int, length: Int) -> CGFloat
     let endIndex = colorString.index(startIndex, offsetBy: length)
     let subString = colorString[startIndex..<endIndex]
     let fullHexString = length == 2 ? subString : "\(subString)\(subString)"
-    var hexComponent: UInt32 = 0
+    var hexComponent: UInt64 = 0
 
-    guard Scanner(string: String(fullHexString)).scanHexInt32(&hexComponent) else {
+    guard Scanner(string: String(fullHexString)).scanHexInt64(&hexComponent) else {
         return 0
     }
     let hexFloat: CGFloat = CGFloat(hexComponent)
