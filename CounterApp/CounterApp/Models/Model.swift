@@ -44,12 +44,14 @@ class Model: ObservableObject {
     func updateCounter(editedCounterItem: CounterItem) async throws {
         countersDictionary[editedCounterItem.recordId!]?.count = editedCounterItem.count
         countersDictionary[editedCounterItem.recordId!]?.name = editedCounterItem.name
+        countersDictionary[editedCounterItem.recordId!]?.colorHex = editedCounterItem.colorHex
         countersDictionary[editedCounterItem.recordId!]?.archived = editedCounterItem.archived
         
         do {
             let record = try await db.record(for: editedCounterItem.recordId!)
             record[CounterRecordKeys.count.rawValue] = editedCounterItem.count
             record[CounterRecordKeys.name.rawValue] = editedCounterItem.name
+            record[CounterRecordKeys.colorHex.rawValue] = editedCounterItem.colorHex
             record[CounterRecordKeys.archived.rawValue] = editedCounterItem.archived
             withAnimation {
                 if (editedCounterItem.archived) {

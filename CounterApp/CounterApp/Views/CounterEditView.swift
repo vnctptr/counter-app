@@ -36,6 +36,7 @@ struct CounterEditView: View {
             Spacer()
             
             Button(action: {
+                counter.colorHex = colorToHexString(color: UIColor(counter.color))
                 let counterItemToUpdate = counter
                 onUpdate(counterItemToUpdate)
                 presentationMode.wrappedValue.dismiss()

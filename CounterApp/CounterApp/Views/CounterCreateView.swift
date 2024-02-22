@@ -35,7 +35,7 @@ struct CounterCreateView: View {
             
             let name = counterName == "" ? "Counter": counterName
             Button(action: {
-                let counterItem = CounterItem(name: name, count: 0, color: selectedColor, archived: false)
+                let counterItem = CounterItem(name: name, count: 0, color: selectedColor, colorHex: colorToHexString(color: UIColor(selectedColor)), archived: false)
                 Task {
                     try await model.addCounter(counterItem: counterItem)
                 }
