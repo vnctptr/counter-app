@@ -113,7 +113,7 @@ struct CounterItemView: View {
                         counterItemToUpdate.count += 1
                         onUpdate(counterItemToUpdate, model)
                     }
-                    .padding(10)
+                    .padding(15)
             }
             .padding(15)
         }
