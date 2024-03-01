@@ -90,7 +90,7 @@ struct CounterItemView: View {
     @EnvironmentObject private var model: Model
     let counter: CounterItem
     let onUpdate: (CounterItem, Model) -> Void
-    let TRUNCATED_NAME_LENGTH = 25
+    let TRUNCATED_NAME_LENGTH = 20
     
     var body: some View {
         ZStack {
