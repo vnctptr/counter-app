@@ -107,7 +107,7 @@ struct CounterItemView: View {
                     .font(.title3)
                     .padding(.leading, 10)
                 Spacer()
-                CounterButton(imageName: "plus.circle.fill")
+                CounterButton(imageName: "plus.circle.fill", bgColor: hexStringToColor(hexString: counter.colorHex))
                     .onTapGesture {
                         var counterItemToUpdate = counter
                         counterItemToUpdate.count += 1
@@ -123,14 +123,36 @@ struct CounterItemView: View {
 
 struct CounterButton: View {
     let imageName: String
+    let bgColor: UIColor?
     let fontSize: CGFloat?
-    
-    init(imageName: String, fontSize: CGFloat = LARGE_TITLE) {
+
+    init(imageName: String, bgColor: UIColor? = nil, fontSize: CGFloat? = nil) {
         self.imageName = imageName
+        self.bgColor = bgColor
         self.fontSize = fontSize
     }
-    
+
     var body: some View {
-        Image(systemName: imageName).font(.system(size: CGFloat(fontSize ?? LARGE_TITLE)))
+        let textColor = calculateTextColor(from: bgColor)
+        return Image(systemName: imageName)
+            .foregroundColor(textColor)
+            .font(.system(size: CGFloat(fontSize ?? LARGE_TITLE)))
+    }
+
+    private func calculateTextColor(from color: UIColor?) -> Color {
+        guard let color = color else {
+            return .white
+        }
+
+        guard let components = color.cgColor.components, components.count >= 3 else {
+            return .white
+        }
+
+        let red = components[0] * 255
+        let green = components[1] * 255
+        let blue = components[2] * 255
+        let brightness = (red * 0.299 + green * 0.587 + blue * 0.114)
+
+        return brightness > 186 ? .black : .white
     }
 }
