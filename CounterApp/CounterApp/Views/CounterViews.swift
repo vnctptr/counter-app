@@ -106,6 +106,7 @@ struct CounterItemView: View {
                 Text(truncatedName)
                     .font(.title3)
                     .padding(.leading, 10)
+                    .foregroundColor(calculateTextColor(from: hexStringToColor(hexString: counter.colorHex)))
                 Spacer()
                 CounterButton(imageName: "plus.circle.fill", bgColor: hexStringToColor(hexString: counter.colorHex))
                     .onTapGesture {
@@ -139,20 +140,21 @@ struct CounterButton: View {
             .font(.system(size: CGFloat(fontSize ?? LARGE_TITLE)))
     }
 
-    private func calculateTextColor(from color: UIColor?) -> Color {
-        guard let color = color else {
-            return .white
-        }
+}
 
-        guard let components = color.cgColor.components, components.count >= 3 else {
-            return .white
-        }
-
-        let red = components[0] * 255
-        let green = components[1] * 255
-        let blue = components[2] * 255
-        let brightness = (red * 0.299 + green * 0.587 + blue * 0.114)
-
-        return brightness > 186 ? .black : .white
+private func calculateTextColor(from color: UIColor?) -> Color {
+    guard let color = color else {
+        return .white
     }
+
+    guard let components = color.cgColor.components, components.count >= 3 else {
+        return .white
+    }
+
+    let red = components[0] * 255
+    let green = components[1] * 255
+    let blue = components[2] * 255
+    let brightness = (red * 0.299 + green * 0.587 + blue * 0.114)
+
+    return brightness > 186 ? .black : .white
 }
