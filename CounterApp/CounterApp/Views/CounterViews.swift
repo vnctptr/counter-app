@@ -103,12 +103,13 @@ struct CounterItemView: View {
                     .font(.system(size: LARGE_TITLE))
                     .fontWeight(.semibold)
                 let truncatedName = counter.name.prefix(TRUNCATED_NAME_LENGTH) + (counter.name.count > TRUNCATED_NAME_LENGTH ? "..." : "")
+                let foregroundColor = calculateTextColor(from: hexStringToColor(hexString: counter.colorHex))
                 Text(truncatedName)
                     .font(.title3)
                     .padding(.leading, 10)
-                    .foregroundColor(calculateTextColor(from: hexStringToColor(hexString: counter.colorHex)))
+                    .foregroundColor(foregroundColor)
                 Spacer()
-                CounterButton(imageName: "plus.circle.fill", bgColor: hexStringToColor(hexString: counter.colorHex))
+                CounterButton(imageName: "plus.circle.fill", color: foregroundColor)
                     .onTapGesture {
                         var counterItemToUpdate = counter
                         counterItemToUpdate.count += 1
@@ -124,19 +125,18 @@ struct CounterItemView: View {
 
 struct CounterButton: View {
     let imageName: String
-    let bgColor: UIColor?
+    let color: Color?
     let fontSize: CGFloat?
 
-    init(imageName: String, bgColor: UIColor? = nil, fontSize: CGFloat? = nil) {
+    init(imageName: String, color: Color? = nil, fontSize: CGFloat? = nil) {
         self.imageName = imageName
-        self.bgColor = bgColor
+        self.color = color
         self.fontSize = fontSize
     }
 
     var body: some View {
-        let textColor = calculateTextColor(from: bgColor)
         return Image(systemName: imageName)
-            .foregroundColor(textColor)
+            .foregroundColor(color)
             .font(.system(size: CGFloat(fontSize ?? LARGE_TITLE)))
     }
 
