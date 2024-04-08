@@ -30,7 +30,7 @@ struct CounterDetailView: View {
                 .fontWeight(.semibold)
             Text(counter.name)
                 .font(.title3)
-                .padding(.leading, 10)
+                .padding(.horizontal, 35)
             HStack (spacing: 40){
                 CounterButton(imageName: "minus.circle.fill")
                     .onTapGesture {
