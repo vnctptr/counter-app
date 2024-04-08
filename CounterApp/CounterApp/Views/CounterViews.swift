@@ -104,6 +104,7 @@ struct CounterItemView: View {
                 Text(String(counter.count))
                     .font(.system(size: LARGE_TITLE))
                     .fontWeight(.semibold)
+                    .padding(.leading, 15)
                     .foregroundColor(foregroundColor)
                 Text(truncatedName)
                     .font(.title3)
