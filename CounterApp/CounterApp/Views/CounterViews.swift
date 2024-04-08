@@ -118,7 +118,7 @@ struct CounterItemView: View {
                     }
                     .padding(15)
             }
-            .padding(15)
+            .padding(10)
         }
         .frame(maxWidth: 600)
     }
