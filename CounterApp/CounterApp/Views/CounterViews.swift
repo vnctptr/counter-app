@@ -43,6 +43,7 @@ struct CounterList: View {
                     print(error)
                 }
             }
+            .padding(.top, 5)
         }
         .sheet(item: $selectedCounter) { selectedCounter in
             CounterDetailSheetView(counter: selectedCounter, onUpdate: updateCounter)
