@@ -102,11 +102,18 @@ struct CounterItemView: View {
             HStack(alignment: .lastTextBaseline) {
                 let truncatedName = counter.name.prefix(TRUNCATED_NAME_LENGTH) + (counter.name.count > TRUNCATED_NAME_LENGTH ? "..." : "")
                 let foregroundColor = calculateTextColor(from: hexStringToColor(hexString: counter.colorHex))
+                let numOfDigits = String(counter.count).count
+                let width = numOfDigits * 26 + 17
+                Rectangle()
+                    .frame(width: CGFloat(width), height: 50)
+                    .foregroundColor(Color.white.opacity(0))
+                    .overlay(
                 Text(String(counter.count))
                     .font(.system(size: LARGE_TITLE))
                     .fontWeight(.semibold)
-                    .padding(.leading, 15)
-                    .foregroundColor(foregroundColor)
+                    .padding(.leading, 5)
+                    .foregroundColor(foregroundColor),
+                alignment: .topLeading)
                 Text(truncatedName)
                     .font(.title3)
                     .padding(.leading, 10)
