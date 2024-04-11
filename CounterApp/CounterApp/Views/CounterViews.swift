@@ -91,7 +91,6 @@ struct CounterItemView: View {
     @EnvironmentObject private var model: Model
     let counter: CounterItem
     let onUpdate: (CounterItem, Model) -> Void
-    let TRUNCATED_NAME_LENGTH = 25
     
     var body: some View {
         ZStack {
@@ -100,10 +99,12 @@ struct CounterItemView: View {
                 .frame(height: 100)
             
             HStack(alignment: .lastTextBaseline) {
-                let truncatedName = counter.name.prefix(TRUNCATED_NAME_LENGTH) + (counter.name.count > TRUNCATED_NAME_LENGTH ? "..." : "")
-                let foregroundColor = calculateTextColor(from: hexStringToColor(hexString: counter.colorHex))
                 let numOfDigits = String(counter.count).count
                 let width = numOfDigits * 26 + 17
+                let truncatedNameLength = 40 - (numOfDigits-1) * 6
+                let truncatedName = counter.name.prefix(truncatedNameLength) + (counter.name.count > truncatedNameLength ? "..." : "")
+                let foregroundColor = calculateTextColor(from: hexStringToColor(hexString: counter.colorHex))
+
                 Rectangle()
                     .frame(width: CGFloat(width), height: 50)
                     .foregroundColor(Color.white.opacity(0))
