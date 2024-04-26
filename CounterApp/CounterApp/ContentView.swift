@@ -25,11 +25,11 @@ struct ContentView: View {
                             Image(systemName: "plus").foregroundColor(Color.primary)
                         }
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: SettingsView()) {
-                            Image(systemName: "gearshape.fill").foregroundColor(Color.primary)
-                        }
-                    }
+//                    ToolbarItem(placement: .navigationBarTrailing) {
+//                        NavigationLink(destination: SettingsView()) {
+//                            Image(systemName: "gearshape.fill").foregroundColor(Color.primary)
+//                        }
+//                    }
                 }
         }.navigationViewStyle(StackNavigationViewStyle())
 
