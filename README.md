@@ -6,4 +6,4 @@ Features:
  - Simple counters that allow you to track in your chosen increment
  - Color coded counters
  - Filters and categories
- - Export as a spreadsheet
+ - Export as a spreadsheet or PDF
